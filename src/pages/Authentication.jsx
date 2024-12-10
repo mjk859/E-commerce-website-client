@@ -1,11 +1,11 @@
-import { Modal } from '@mui/material'
-import React, { useState } from 'react'
-import styled from 'styled-components';
-import LogoImage  from '../utils/Images/Logo.png';
-import AuthImage  from '../utils/Images/AuthImage.png';
-import { Close } from '@mui/icons-material';
-import SignUp from '../components/SignUp';
-import SignIn from '../components/Signin';
+import { Modal } from "@mui/material";
+import React, { useState } from "react";
+import styled from "styled-components";
+import LogoImage from "../utils/Images/shopspherelogo.png";
+import AuthImage from "../utils/Images/AuthImage.png";
+import { Close } from "@mui/icons-material";
+import SignIn from "../components/Signin.jsx";
+import SignUp from "../components/SignUp.jsx";
 
 const Container = styled.div`
   flex: 1;
@@ -13,13 +13,12 @@ const Container = styled.div`
   display: flex;
   background: ${({ theme }) => theme.bg};
 `;
-
 const Left = styled.div`
   flex: 1;
   position: relative;
   @media screen and (max-width: 768px) {
     display: none;
-  }   
+  }
 `;
 
 const Logo = styled.img`
@@ -28,7 +27,6 @@ const Logo = styled.img`
   left: 60px;
   z-index: 10;
 `;
-
 const Image = styled.img`
   position: relative;
   height: 100%;
@@ -37,8 +35,8 @@ const Image = styled.img`
 `;
 
 const Right = styled.div`
-  flex: 0.9;
   position: relative;
+  flex: 0.9;
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -47,7 +45,7 @@ const Right = styled.div`
   justify-content: center;
   @media screen and (max-width: 768px) {
     flex: 1;
-  }  
+  }
 `;
 
 const CloseButton = styled.div`
@@ -58,16 +56,18 @@ const CloseButton = styled.div`
   padding: 2px;
   width: 32px;
   height: 32px;
-  border: 1px solid ${({ theme}) => theme.primary};
+  border: 1px solid ${({ theme }) => theme.primary};
   display: flex;
   justify-content: center;
   align-items: center;
-  &:hover{
+  &:hover {
     background: ${({ theme }) => theme.primary + 20};
   }
 `;
 
 const Text = styled.p`
+  display: flex;
+  gap: 12px;
   font-size: 16px;
   text-align: center;
   color: ${({ theme }) => theme.text_secondary};
@@ -76,45 +76,48 @@ const Text = styled.p`
     font-size: 14px;
   }
 `;
-
 const TextButton = styled.div`
-  display: flex;
-  gap: 12px;
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
 `;
 
-
 const Authentication = ({ openAuth, setOpenAuth }) => {
-  const [login, setLogin] = useState(false); 
+  const [login, setLogin] = useState(true);
   return (
     <Modal open={openAuth} onClose={() => setOpenAuth(false)}>
       <Container>
         <Left>
-          <Logo src={ LogoImage }/>
-          <Image src={ AuthImage }/>
+          <Logo src={LogoImage} />
+          <Image src={AuthImage} />
         </Left>
         <Right>
           <CloseButton>
-            <Close onClick={() => setOpenAuth(false) } />
+            <Close onClick={() => setOpenAuth(false)} />
           </CloseButton>
           {login ? (
             <>
-              <SignIn/>
-              <Text>Don't have an account? <TextButton onClick={() => setLogin(false)}>Sign Up</TextButton></Text>
+              <SignIn setOpenAuth={setOpenAuth} />
+              <Text>
+                {" "}
+                Don't have an account ?{" "}
+                <TextButton onClick={() => setLogin(false)}>Sign Up</TextButton>
+              </Text>
             </>
           ) : (
             <>
-              <SignUp/>
-              <Text>Already have an account? <TextButton onClick={() => setLogin(true)}>Sign In</TextButton></Text>
+              <SignUp setOpenAuth={setOpenAuth} />
+              <Text>
+                Already have an account ?{" "}
+                <TextButton onClick={() => setLogin(true)}>Sign In</TextButton>
+              </Text>
             </>
           )}
         </Right>
       </Container>
     </Modal>
-  )
-}
+  );
+};
 
 export default Authentication;

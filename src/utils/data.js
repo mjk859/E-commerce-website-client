@@ -1,4 +1,4 @@
-export const category = [
+export const categories = [
   {
     img: "https://jaxsonmaximus.com/wp-content/uploads/2020/04/34394c211f01e58539f91e79e6ce1420.jpg",
     name: "Casual Wear",
