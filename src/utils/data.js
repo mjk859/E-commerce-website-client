@@ -1,6 +1,6 @@
 export const categories = [
   {
-    img: "https://jaxsonmaximus.com/wp-content/uploads/2020/04/34394c211f01e58539f91e79e6ce1420.jpg",
+    img: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/AUGUST/12/N9JXwusW_527a68db55844f32b7abfa2d18b2b77a.jpg",
     name: "Casual Wear",
     off: "20-40% OFF",
   },

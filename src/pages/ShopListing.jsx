@@ -130,7 +130,7 @@ const ShopListing = () => {
 
   useEffect(() => {
     getFilteredProductsData();
-  }, []);
+  }, [priceRange, selectedSizes, selectedCategories]);
 
 
   return (
